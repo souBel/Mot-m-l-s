@@ -186,7 +186,7 @@ void Appel0(char *sMessage){
 		if (strlen(sMessage)==0){
 			printf("Programme en cours...\n");
 		} else printf("%s%s: tâche en cours...\n",sE(2*nEcriS),sMessage);
-	} 
+	}
 }//Appel0
 
 void Appel1(char *sMessage){
@@ -522,7 +522,7 @@ int bConsonnE2(char *sString,int *pnCodeCaractereRg){
 }//bConsonnE2
 
 char *sCouple(int iEntierA,int iEntierB){
-	//rend la chaîne (iEntierA,iEntierB)	
+	//rend la chaîne (iEntierA,iEntierB)
 	char *sCouple=sP(sC3(sEntier(iEntierA),",",sEntier(iEntierB)));
 	OctetGereR(sCouple);
 	return(sCouple);
@@ -581,7 +581,7 @@ char *sEntierAvecSigne(int iEntier){
 }//sEntierAvecSigne
 
 char *sEst(int bAssertion){
-	//rend "est" tel quel,ou négativé avec "n'"..."pas" si bAssertion est faux 
+	//rend "est" tel quel,ou négativé avec "n'"..."pas" si bAssertion est faux
 	#define kuEstLg 3//"est"
 	#define kuNestPasLg 4//"n'est pas"
 	char *sEst=malloc( kuAntiSlashZerO + (bAssertion)? kuEstLg : kuNestPasLg);
@@ -631,12 +631,12 @@ int nHasard(int uBorneLim){
 	return(nHasard);
 }//nHasard
 
-int uHasard(int uBorneMax){
+int uHasard(int uBorneMin, int uBorneMax){ //peut on ajouter uBorneMin en param ?
 	//rend un nombre aléatoire ds [1..nBorneMax]
 	int uHasard;
-	Croit(1,uBorneMax,kuIntegerMaX);
-	uHasard=1+rand()%uBorneMax;
-	Croit(1,uHasard,uBorneMax);
+	Croit(uBorneMin,uBorneMax,kuIntegerMaX);
+	uHasard=uBorneMin+rand()%uBorneMax;
+	Croit(uBorneMin,uHasard,uBorneMax);
 	return(uHasard);
 }//uHasard
 
@@ -732,13 +732,13 @@ int bMinuscule(char cCaractere){
 }//bMinuscule
 
 int uModulo1(int uDividende,int uDiviseur){
-	//rend le modulo standard à ceci près que le résultat 0 éventuel est remplacé par uDiviseur: uModulo1(12,4)=4 
+	//rend le modulo standard à ceci près que le résultat 0 éventuel est remplacé par uDiviseur: uModulo1(12,4)=4
 	int nModulo;
 	Vrai2(uDividende>0,uDiviseur>0);
 	nModulo=uDividende%uDiviseur;
 	if (nModulo==0)
 		nModulo=uDiviseur;
-	if (0)//ou 1 pr que li+1 soit exécutée 
+	if (0)//ou 1 pr que li+1 soit exécutée
 		seee("uModulo1",uDividende,uDiviseur,nModulo);
 	Croit(1,nModulo,uDiviseur);
 	return(nModulo);
@@ -777,7 +777,7 @@ void OctetGereR(char *sMalloc){
 				yOctetGereR1[nAlloc]=0;
 			}
 			zuOctetGereR=1-zuOctetGereR;//change de demi-espace
-			nOctetGereR1=0;//premier index valide sur le futur demi-espace 
+			nOctetGereR1=0;//premier index valide sur le futur demi-espace
 		}
 	} else {
 		yOctetGereR1[nOctetGereR1++]=(long) sMalloc;
@@ -839,7 +839,7 @@ void OutilTESTER(int iTest){
 			case 60:	for (uFois=1;uFois<10;uFois++)
 							printf("Tirage aléatoire dans [0..3]: %d.\n",nHasard(3));
 						for (uFois=1;uFois<10;uFois++)
-							printf("Tirage aléatoire dans [1..4]: %d.\n",uHasard(4));
+							printf("Tirage aléatoire dans [1..4]: %d.\n",uHasard(1, 4)); //ajout du 1
 						break;
 			case 70:	Titrer("salut");
 						Titrer("");
@@ -865,14 +865,14 @@ int bPair(int iEntier){
 
 char *sP(char *sEntreParenthese){
 	//rend sEntreParenthese précédé de "(" et suivi de ")"
-	assert(sEntreParenthese!=0);	
+	assert(sEntreParenthese!=0);
 	char *sP=sC3("(",sEntreParenthese,")");
 	OctetGereR(sP);
 	return(sP);
 }//sP
 
 char *sPas(char *sVerbe,int bNegativer){
-	//rend sVerbe tel quel,ou négativé avec "ne"..."pas" si bNegativer 
+	//rend sVerbe tel quel,ou négativé avec "ne"..."pas" si bNegativer
 	#define kuNeLg 3//"n'" ou "ne "
 	#define kuPasLg 4//" pas"
 	char *sPas=malloc(kuNeLg+strlen(sVerbe)+kuPasLg+kuAntiSlashZerO);

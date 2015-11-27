@@ -79,7 +79,7 @@ int bChiffre(char cCaractere);//'0'..'9',comme bDecit
 char *sChoix(int bOptionSinonAlternative,char *sOption,char *sAlternative);//cf (bOptionSinonAlternative)? sOption: sAlternative
 char *sChoix0(int bOption,char *sOption);//si bOption,rend sOption;sinon, rend une chaîne vide
 void Confirmer(char *sMessage);//affiche sMessage et demande à l'utilisateur de valider
-char *sCouple(int iEntierA,int iEntierB);//eg "(3,5)" 
+char *sCouple(int iEntierA,int iEntierB);//eg "(3,5)"
 void Croit(int iMinInclus,int iDedans,int iMaxInclus);
 int bCroit(int iMinInclus,int iDedans,int iMaxInclus);
 void CroitStrict(int iMinExclu,int iDedans,int iMaxExclu);
@@ -94,7 +94,7 @@ int bFaux(int iQuelconque);//vrai ssi iQuelconque==0
 void FlipFlop(int bNouvelEtat,int *pbFlipFlop);// "pb" pour "pointeur sur booléen"
 char *sFois(int nFois,char cMotif);//rend cMotif juxtaposé nFois
 int nHasard(int uBorneLim);//[0..uBorneLim[
-int uHasard(int uBorneMax);//[1..uBorneMax]
+int uHasard(int uBorneMin, int uBorneMax);//[1..uBorneMax] --ajout de borne min --
 int bImpair(int iEntier);
 long yInf(long yA,long yB);//identique à yMin(yA,yB)
 int bLettre(char cCaractere);
@@ -109,7 +109,7 @@ int bMajuscule(char cCaractere);
 long yMin(long yA,long yB);//identique à yInf(yA,yB)
 int bMinuscule(char cCaractere);
 int uModulo1(int uDividende,int uDiviseur);//résultat dans [1..uDiviseur];calcule un modulo classique,mais 0 est remplacé par uDiviseur
-char *sNie(char *sVerbe,int bNegativer,char *sAffirmation,char *sNegation);//encadre sVerbe avec "ne" et sNegation, ou complète avec sAffirmation 
+char *sNie(char *sVerbe,int bNegativer,char *sAffirmation,char *sNegation);//encadre sVerbe avec "ne" et sNegation, ou complète avec sAffirmation
 void OutilAMORCER();
 void OutilINITIALISER();
 void OutilTESTER(int iTest);

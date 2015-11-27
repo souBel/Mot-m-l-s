@@ -9,7 +9,7 @@ void ModuleAmorcer(){
 
 int main(){
     ModuleAmorcer();
-    GrilleTester(1);
     MotTester(1);
+    GrilleTester(1);
     return 0;
 }

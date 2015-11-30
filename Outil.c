@@ -634,9 +634,11 @@ int nHasard(int uBorneLim){
 int uHasard(int uBorneMin, int uBorneMax){ //peut on ajouter uBorneMin en param ?
 	//rend un nombre aléatoire ds [1..nBorneMax]
 	int uHasard;
+	//Appel0("uHasard");
 	Croit(uBorneMin,uBorneMax,kuIntegerMaX);
-	uHasard=uBorneMin+rand()%uBorneMax;
+	uHasard=uBorneMin+rand()%(uBorneMax-uBorneMin+1);
 	Croit(uBorneMin,uHasard,uBorneMax);
+	//Appel1("uHasard");
 	return(uHasard);
 }//uHasard
 

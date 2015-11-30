@@ -7,4 +7,8 @@ void MotInitialiser();
 
 void MotTester(int numTest);
 
-char MotLire(int min, int max);
+void MotLire(int min, int max, char *sResult);
+
+void MotAfficher();
+
+void GrillePlacement();

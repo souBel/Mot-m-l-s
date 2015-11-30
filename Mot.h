@@ -11,4 +11,4 @@ void MotLire(int min, int max, char *sResult);
 
 void MotAfficher();
 
-void GrillePlacement();
+void MotLu(int numMot, char *sTabMot);

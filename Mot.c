@@ -31,11 +31,13 @@ void MotLire(int min, int max, char *sResult ){
 
 }
 
+void MotLu(int numMot, char *sTabMot)
+{//Récupère le chaine de caractère de tabMoT
+	strcpy(sTabMot, tabMoT[numMot]);
+}
 
 void MotInitialiser()
 {//stocke ds tabMoT nbMot mots du dictionr de référence
-
-
 
 	int min=1;
 	int max=8300;

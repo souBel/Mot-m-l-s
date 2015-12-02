@@ -15,10 +15,11 @@ void MotAmorcer()
 void MotLire(int min, int max, char *sResult ){
 //retourne un mot au hasard du dico (il le récupère)
 	static int nMotLirE=0;//dédié MotLire
+  srand(time(NULL)); //permet d'initialiser le random et donc le nombre change
 	int nbRand, i;
 	//Appel0("MotLire");
 	nbRand=uHasard(min,max);
-	//printf("\nVoici le nombre aleatoire : %d \n", nbRand); // --> probleme avec la fonction uHasard : renvoie toujours le meme nb (+41) : on s'en occupera lorsque tout fonctionnera
+	//printf("\nVoici le nombre aleatoire : %d \n", nbRand);
 	FILE* fic = NULL;
 	fic=fopen("dico.txt", "r");
 		for(i=0; i<nbRand; i++) //on lit nbRand mots et on récupère le nbRandième mot
@@ -31,10 +32,7 @@ void MotLire(int min, int max, char *sResult ){
 
 }
 
-void MotLu(int numMot, char *sTabMot)
-{//Récupère le chaine de caractère de tabMoT
-	strcpy(sTabMot, tabMoT[numMot]);
-}
+
 
 void MotInitialiser()
 {//stocke ds tabMoT nbMot mots du dictionr de référence
@@ -64,17 +62,21 @@ void MotAfficher()
 	for(i=0; i<Lmax; i++){
 		//afficher une ligne de 4 mots
         for(j=0; j<Cmax; j++){
-            printf("%s			", tabMoT[i*Cmax+j]);
+            printf("%s	", tabMoT[i*Cmax+j]);
         }
         printf("\n");
 	}
 
 }
 
+void MotLu(int numMot, char *sTabMot)
+{//Récupère le chaine de caractère de tabMoT dans sTabMot
+	strcpy(sTabMot, tabMoT[numMot]);
+}
 
 void MotTester(int numTest){
     switch (numTest) {
-        case 1:MotInitialiser();	MotAfficher();
+        case 1:MotInitialiser();	MotAfficher();  
             break;
 
         default:

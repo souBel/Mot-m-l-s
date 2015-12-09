@@ -1,6 +1,7 @@
 #include "Outil.h"
 #include "Grille.h"
 #include "Mot.h"
+#include "time.h"
 #define nbMot 36
 #define motLong 30
 #define N 9
@@ -15,9 +16,9 @@ void GrilleAfficher()
     int i, j;
     for (i=0; i<N; i++) {
         for (j=0; j<M; j++){
-            printf(" %c", cGrille[i][j]);
+            printf("%c", cGrille[i][j]);
         }
-        printf(" \n");
+        printf("\n");
     }
         
         
@@ -39,7 +40,7 @@ void GrillePlacementHg() //Place les mots en horizontale en partant de la gauche
   int i, j;
 		for (i=0; i<nbMot; i++) {
 			MotLu(i, tabMoT[0]);
-			strcpy(&cGrille[i][0],&tabMoT);
+			strcpy(&cGrille[i][1],&tabMoT);
 			
 		}
     for(i=0; i<N; i++){
@@ -51,14 +52,35 @@ void GrillePlacementHg() //Place les mots en horizontale en partant de la gauche
     }
 }
 
-/*void GrillePlacementHd() //Place les mots en horizontale en partant de la droite
+void GrillePlacementHd() //Place les mots en horizontale en partant de la droite
 {
   int i, j;
 		for (i=0; i<nbMot; i++) {
-			MotLu(i, tabMoT[0]);
-			strcpy(&cGrille[i][0],&tabMoT);
-			
+			MotLuEnvers(i, tabMoT[0]);
+			strcpy(&cGrille[i][0],&tabMoT[i]);
 		}
+    for(i=0; i<N; i++){
+      for(j=0; j<M; j++){
+        if(cGrille[i][j]==' '){
+         cGrille[i][j]='@';
+        }
+      }
+    }
+}
+
+void GrillePlacementVh() //Place les mots en verticale en partant du haut
+{
+  int i, j, k;
+		//for (i=0; i<nbMot; i++) {
+			
+      for (j=0; j<N; j++){
+        MotLu(i, tabMoT[0]);
+        for (k=0; k<M; k++){
+          //Dis(&tabMoT[j][k]);
+			    cGrille[k][j]=tabMoT[j][k];
+        }
+			}
+		//}
     for(i=0; i<N; i++){
       for(j=0; j<M; j++){
         if(cGrille[i][j]==' '){
@@ -66,10 +88,6 @@ void GrillePlacementHg() //Place les mots en horizontale en partant de la gauche
         } 
       }
     }
-}*/
-
-void GrillePlacementVh() //Place les mots en verticale en partant du haut
-{
 }
 
 void GrillePlacementVb() //Place les mots en horizontale en partant du bas
@@ -95,7 +113,7 @@ void GrilleCaseDispo() //Place des lettres dans les cases non utilisées
 void GrillePlacer()
 { //Placer les mots stockés dans tabMoT dans la grille
     GrilleInitialiser(); //permet de marquer les cases disponibles restantes
-    GrillePlacementHg();
+    GrillePlacementVh();
     GrilleCaseDispo();
     //Appel0("GrillePlacer");
 

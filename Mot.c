@@ -1,4 +1,5 @@
 #include "Outil.h"
+#include "time.h"
 #define nbMot 36
 #define motLong 30 //longueur du mot
 #define Lmax 9
@@ -72,6 +73,17 @@ void MotAfficher()
 void MotLu(int numMot, char *sTabMot)
 {//Récupère le chaine de caractère de tabMoT dans sTabMot
 	strcpy(sTabMot, tabMoT[numMot]);
+}
+
+void MotLuEnvers(int numMot, char TabMot2[nbMot][motLong])
+{//Récupère la chaine de caractère de tabMoT dans TabMot2[][]
+  int i, k;
+  int c=30;
+   for (i=motLong; i>=0;i--){
+     k=30-c;
+	   TabMot2[numMot][k]=tabMoT[numMot][i];
+     c--;
+   }
 }
 
 void MotTester(int numTest){
